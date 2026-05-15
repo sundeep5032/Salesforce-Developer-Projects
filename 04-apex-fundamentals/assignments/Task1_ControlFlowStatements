@@ -1,0 +1,82 @@
+// 🧪 Task 1 – Control Flow Statements
+
+/* Create an Integer variable called time and assign a value to it.
+   If the value is greater than 6 → print “Good Morning”.
+   If the value is less than 6 → print “Good Night”.
+*/
+
+Integer time1 = 5;    // for getting present time to pass to integer Datetime.now().hour()   
+if(time1 > 6){
+    System.debug('Good Morning');
+}else{
+    System.debug('Good Night');
+}
+
+/*
+Declare a variable isMine of type Boolean (declare only, no assignment).
+   Write a condition that prints:
+     “Yes” → if isMine is true
+     “No” → if isMine is false
+     “MayBe” → if isMine is not equal to any of them.
+*/
+
+Boolean isMine; // This is null by default
+
+if(isMine == true){
+    System.debug('Yes');
+}else if(isMine == false){
+    System.debug('No');
+}else{
+    // This runs because isMine is null
+    System.debug('MayBe');
+}
+
+/*
+Take three subject marks in three different variables and handle these cases:
+
+   1. If the total marks exceed 75% and all individual subject marks are greater than 75 → print “Excellent Performance”.
+   2. If total > 75% but any individual mark < 75 → print
+      Good Performance
+      You need to improve on <subject>
+   3. If total < 75% → print
+      Bad Performance
+      You need a lot of improvement
+      
+   4. Unit test by changing values of the subject marks.
+*/
+
+// 1. Initialize variables with subject marks
+Integer math = 90;
+Integer science = 50;
+Integer english = 90;
+
+// 2. Calculate the total and percentage
+// We divide by 300.0 to tell Apex to treat this as a Decimal calculation
+Decimal totalMarks = math + science + english;
+Decimal totalPercentage = (totalMarks / 300.0) * 100;
+
+// 3. Logic Handling
+// Check if total is > 75% AND every individual subject is > 75
+if (totalPercentage > 75 && math > 75 && science > 75 && english > 75) {
+    System.debug('Excellent Performance');
+} 
+// Check if total is > 75% but the condition above failed
+else if (totalPercentage > 75) {
+    System.debug('Good Performance');
+    
+    // Check each subject individually for specific feedback
+    if (math < 75) {
+        System.debug('You need to improve on Math');
+    }
+    if (science < 75) {
+        System.debug('You need to improve on Science');
+    }
+    if (english < 75) {
+        System.debug('You need to improve on English');
+    }
+} 
+// If the total percentage is 75 or below
+else {
+    System.debug('Bad Performance');
+    System.debug('You need a lot of improvement');
+}
